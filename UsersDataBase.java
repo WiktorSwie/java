@@ -1,4 +1,3 @@
-package projekcik;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,16 +8,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UsersDataBase {
-	public void addUser(User prsn) throws Exception {
+	public void addUser(User NewUser) throws Exception {
 		Connection connection = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-	        	connection = DriverManager.getConnection("jdbc:sqlite:D:\\workspace\\dbforproject.db");
+	        	connection = DriverManager.getConnection("jdbc:sqlite:D:\\JAVA\\Db\\dbforproject.db");
 
 	        	Statement statement = connection.createStatement();
 	        	statement.setQueryTimeout(30); 
 
-	        	statement.executeUpdate("INSERT INTO Users (Login, Password) VALUES (NewLogin, NewPassword)");
+	        	statement.executeUpdate("INSERT INTO Users (Login, Password, Role) VALUES('" + NewUser.getLogin() + "','"+ NewUser.getPassword()+"',0)");
 	        
 		}
 	    	catch(SQLException e){
@@ -44,7 +43,7 @@ public class UsersDataBase {
 		Connection connection = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-	        	connection = DriverManager.getConnection("jdbc:sqlite:D:\\workspace\\dbforproject.db");
+	        	connection = DriverManager.getConnection("jdbc:sqlite:D:\\JAVA\\Db\\dbforproject.db");
 
 	        	Statement statement = connection.createStatement();
 	        	statement.setQueryTimeout(30); 
@@ -77,15 +76,15 @@ public class UsersDataBase {
 		Connection connection = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-	         	connection = DriverManager.getConnection("jdbc:sqlite:D:\\workspace\\dbforproject.db");
+	         	connection = DriverManager.getConnection("jdbc:sqlite:D:\\JAVA\\Db\\dbforproject.db");
 
 	         	Statement statement = connection.createStatement();
 	         	statement.setQueryTimeout(30); 
 
-	         	ResultSet resultSet = statement.executeQuery("SELECT Login, Password from Users");
+	         	ResultSet resultSet = statement.executeQuery("SELECT Login, Password,Role from Users");
 	         	while(resultSet.next())
 	         	{
-	        	 	User newUser = new User(resultSet.getString("Login"), resultSet.getString("Password"), 0);
+	        	 	User newUser = new User(resultSet.getString("Login"), resultSet.getString("Password"),resultSet.getInt("Role"));
 	        	 	listOfUsers.add (newUser);
 	         	}
 		}
