@@ -1,4 +1,3 @@
-package projekcik;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +10,10 @@ public class PersonManager {
 		Users = new ArrayList<User>();
 	}
 	
-	public void addUser (User p) throws Exception {
-		UsersDB.addUser(p);
-		Users.add(p);
+	public void addUser (User NewUser) throws Exception {
+		UsersDB.addUser(NewUser);
+		
+		Users.add(NewUser);
 	}
 	
 	public Boolean removeUser (String Login) throws Exception {

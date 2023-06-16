@@ -1,4 +1,6 @@
-package projekcik;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 public class User {
 	String Login;
 	
@@ -13,8 +15,8 @@ public class User {
 	}
 
 	
-	public void setLogin(String Login) {
-		this.Login = Login;
+	public void setLogin(String newLogin) {
+		this.Login = newLogin;
 	}
 	
 
@@ -23,8 +25,8 @@ public class User {
 	}
 
 
-	public void setPassword(String Password) {
-		this.Password = Password;
+	public void setPassword(String newPassword) {
+		this.Password = newPassword;
 	}
 
 	public String Password;

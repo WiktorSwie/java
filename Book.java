@@ -1,5 +1,3 @@
-package projekcik;
-
 
 public class Book {
 String Title;
@@ -64,6 +62,5 @@ String Title;
 	public static void remove(Book Title) {
 		
 	}
-	public void add(Book Title, Book Author, Book Genre) {
-	}
+
 }

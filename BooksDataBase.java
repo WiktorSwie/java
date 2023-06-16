@@ -1,7 +1,6 @@
-package projekcik;
-
 import java.util.ArrayList;
 import java.util.List;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,10 +13,10 @@ public class BooksDataBase {
 		Connection connection = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-	        	connection = DriverManager.getConnection("jdbc:sqlite:D:\\JAVA\\Db\\dbforproject.db");
+	        	connection = DriverManager.getConnection("jdbc:sqlite:D:/JAVA/Db/dbforproject.db");
 
 	        	PreparedStatement statement = connection.prepareStatement("INSERT INTO Books (Title, Author, Genre) VALUES (?,?,?)");
-	        	statement.setQueryTimeout(30); 
+	        	statement.setQueryTimeout(20); 
 	        	statement.setString(1, NewTitle);
 	        	statement.setString(2, NewAuthor);
 	        	statement.setString(3, NewGenre);
@@ -46,7 +45,7 @@ public class BooksDataBase {
 		Connection connection = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-	        	connection = DriverManager.getConnection("jdbc:sqlite:D:\\JAVA\\Db\\dbforproject.db");
+	        	connection = DriverManager.getConnection("jdbc:sqlite:D:/JAVA/Db/dbforproject.db");
 
 	        	Statement statement = connection.createStatement();
 	        	statement.setQueryTimeout(30); 
@@ -79,7 +78,7 @@ public class BooksDataBase {
 		Connection connection = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-	         	connection = DriverManager.getConnection("jdbc:sqlite:D:\\JAVA\\Db\\dbforproject.db");
+	         	connection = DriverManager.getConnection("jdbc:sqlite:D:/JAVA/Db/dbforproject.db");
 
 	         	Statement statement = connection.createStatement();
 	         	statement.setQueryTimeout(30); 

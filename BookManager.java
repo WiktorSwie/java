@@ -1,5 +1,3 @@
-package projekcik;
-
 import java.util.ArrayList;
 import java.util.List;
 

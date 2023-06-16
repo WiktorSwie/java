@@ -1,8 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JTextField;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,10 +17,15 @@ public class UsersDataBase {
 			Class.forName("org.sqlite.JDBC");
 	        	connection = DriverManager.getConnection("jdbc:sqlite:D:\\JAVA\\Db\\dbforproject.db");
 
-	        	Statement statement = connection.createStatement();
-	        	statement.setQueryTimeout(30); 
+	        	String sql = "INSERT INTO Users (Login, Password, Role) VALUES (?, ?, 0)";
+	        	PreparedStatement statement = connection.prepareStatement(sql);
 
-	        	statement.executeUpdate("INSERT INTO Users (Login, Password, Role) VALUES('" + NewUser.getLogin() + "','"+ NewUser.getPassword()+"',0)");
+	        	statement.setString(1, NewUser.getLogin());
+	        	statement.setString(2, NewUser.getPassword());
+
+	        	statement.executeUpdate();
+
+	        	statement.close();
 	        
 		}
 	    	catch(SQLException e){
